@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fulias Team — Цифровая Экосистема</title>
+
+    <link rel="icon" type="image/jpeg" href="fulias-team.png">
+
+    <meta name="description" content="Независимое объединение разработчиков и цифровых архитекторов. Проектирование кастомных инструментов, кроссплатформенных решений и автоматизированных систем.">
+    <meta name="keywords" content="Fulias Team, разработка, софт, кроссплатформенность, автоматизация, боты, мессенджер, Funtys, ПИВО">
+    <meta name="author" content="Fulias Team">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://funtys.ru/">
+    <meta property="og:title" content="Fulias Team — Цифровая Экосистема">
+    <meta property="og:description" content="Строим экосистему кастомных инструментов, которые делают повседневное цифровое пространство интуитивнее, легче и интерактивнее.">
+    <meta property="og:image" content="fulias-team.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Fulias Team — Цифровая Экосистема">
+    <meta property="twitter:description" content="Строим экосистему кастомных инструментов, которые делают повседневное цифровое пространство интуитивнее, легче и интерактивнее.">
+    <meta property="twitter:image" content="fulias-team.jpg">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131a26;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-container {
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn, #menu-toggle {
+            display: none;
+        }
+
+        section {
+            padding: 100px 0 40px 0;
+        }
+
+        .hero {
+            padding-top: 140px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .typewriter-container {
+            height: 7.5rem; 
+            margin-top: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typewriter {
+            color: var(--accent);
+            border-right: 3px solid var(--accent);
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+            margin: 0 auto;
+            max-width: 850px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 30px 24px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-card svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+            transition: transform 0.3s ease, fill 0.3s ease;
+        }
+
+        .project-card:hover h3 svg {
+            fill: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(180deg, transparent, var(--card-bg), transparent);
+            border-radius: 16px;
+            margin: 60px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header { 
+                padding: 20px 0; 
+            }
+
+            .menu-btn {
+                display: block;
+                color: var(--text-main);
+                font-size: 1.4rem;
+                cursor: pointer;
+                user-select: none;
+                padding: 5px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                margin-top: 15px;
+                background-color: var(--card-bg);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 10px;
+                min-width: 180px;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                overflow: hidden;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            }
+
+            nav a:last-child {
+                border-bottom: none;
+            }
+
+            nav a:hover {
+                background-color: rgba(59, 130, 246, 0.08);
+            }
+
+            #menu-toggle:checked ~ nav {
+                display: flex;
+                animation: fadeIn 0.2s ease-out;
+            }
+
+            .hero h1 { font-size: 2.2rem; }
+            .typewriter-container { height: 6rem; }
+            section { padding: 60px 0 20px 0; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <div class="container">
+        <header>
+            <a href="#main" class="logo">Fulias <span>Team</span></a>
+            <div class="nav-container">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu-btn">☰</label>
+                <nav>
+                    <a href="#main" onclick="document.getElementById('menu-toggle').checked = false;">Главная</a>
+                    <a href="#vectors" onclick="document.getElementById('menu-toggle').checked = false;">Направления</a>
+                    <a href="#projects" onclick="document.getElementById('menu-toggle').checked = false;">Проекты</a>
+                </nav>
+            </div>
+        </header>
+
+        <section id="main" class="hero">
+            <h1>Мы создаем среду,</h1>
+            <div class="typewriter-container">
+                <h1 class="typewriter" id="typewriter"></h1>
+            </div>
+            <p>Независимое объединение разработчиков и цифровых архитекторов. Мы не просто пишем код — мы строим экосистему кастомных инструментов, которые делают повседневное цифровое пространство интуитивнее, легче и интерактивнее.</p>
+        </section>
+
+        <section id="vectors">
+            <h2 class="section-title">Наши <span>направления</span></h2>
+            <div class="features-grid">
+                <div class="card">
+                    <h3>Кроссплатформенность</h3>
+                    <p>Мы верим, что софт должен быть свободным от системных ограничений. Наш фокус — перенос сложных решений на гибкие современные графические движки, способные работать на любой ОС без костылей и эмуляторов.</p>
+                </div>
+                <div class="card">
+                    <h3>Связанность и автоматизация</h3>
+                    <p>Разработка умных микросервисов и ботов, которые берут на себя рутину. Мы учим различные цифровые платформы общаться между собой, организуя моментальный обмен данными и упрощая управление сообществами.</p>
+                </div>
+                <div class="card">
+                    <h3>Медиапотоки и интерфейсы</h3>
+                    <p>Эксперименты с восприятием информации, звука и текста. Мы переосмысляем то, как люди общаются в сети и как взаимодействуют с контентом, убирая из интерфейсов всё лишнее ради чистой производительности.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Разработанные <span>решения</span></h2>
+            <div class="projects-grid">
+                
+                <a href="http://pivo-prov.ru" target="_blank" class="project-card">
+                    <h3>ПИВО <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+                    <p>Инструмент кастомизации игрового окружения и интеграции внешних веб-сервисов в реальном времени.</p>
+                </a>
+
+                <a href="http://funtys.ru" target="_blank" class="project-card">
+                    <h3>Funtys Messenger <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+                    <p>Локальная, быстрая среда для защищенного и комфортного обмена мгновенными текстовыми сообщениями.</p>
+                </a>
+
+                <a href="http://music.funtys.ru" target="_blank" class="project-card">
+                    <h3>Funtys Music <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+                    <p>Аудиоплеер и облачный потоковый сервис для удобного структурирования и прослушивания медиафайлов.</p>
+                </a>
+
+                <a href="https://t.me/funtys_moderator_bot" target="_blank" class="project-card">
+                    <h3>Funtys Moderator Bot <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+                    <p>Интеллектуальная автоматизированная система для администрирования, модерации чатов и контроля сообществ.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-item">
+                <h4>99%</h4>
+                <p>Чистого кода</p>
+            </div>
+            <div class="stat-item">
+                <h4>Работают</h4>
+                <p>Статус проектов</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Fulias Team. Инженерия цифрового комфорта.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #4b5563;">Собрано на чистом энтузиазме.</p>
+        </footer>
+    </div>
+
+    <script>
+        const words = ["в которой хочется находиться.", "где комфортно жить.", "где приятно работать."];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typewriter').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 80);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (document.getElementById('typewriter').innerHTML.length > 0) {
+                    let currentText = document.getElementById('typewriter').innerHTML;
+                    document.getElementById('typewriter').innerHTML = currentText.substring(0, currentText.length - 1);
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    setTimeout(typingEffect, 400);
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 40);
+            };
+            loopDeleting();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('typewriter').innerHTML = "";
+            typingEffect();
+        });
+    </script>
+</body>
+</html>
